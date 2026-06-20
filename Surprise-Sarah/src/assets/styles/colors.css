@@ -1,0 +1,10 @@
+:root {
+    --rose:        #f9a8c9;
+    --rose-deep:   #e8749e;
+    --violet:      #c9a0d9;
+    --white:       #fff8f9;
+    --glass-bg:    rgba(255, 255, 255, 0.06);
+    --glass-border:rgba(249, 168, 201, 0.2);
+    --glow-rose:   rgba(249, 168, 201, 0.45);
+    --glow-violet: rgba(201, 160, 217, 0.25);
+}

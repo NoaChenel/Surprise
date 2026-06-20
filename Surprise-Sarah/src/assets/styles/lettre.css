@@ -1,0 +1,106 @@
+/* lettre.css */
+.lettre-root {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    padding: 6rem 1.5rem 4rem;
+}
+
+.lettre-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    margin: 0 0 1.4rem;
+    /* Força le GPU à préparer la couche avant la transition */
+    will-change: opacity, transform;
+}
+
+.lettre-reveal.lettre-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lettre-card {
+    max-width: 680px;
+    width: 100%;
+    background: rgba(13, 5, 9, 0.55);
+    backdrop-filter: blur(18px);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem 3.5rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.lettre-titre {
+    font-size: 26px;
+    font-weight: 500;
+    color: #f9a8d4;
+    margin: 0 0 2rem;
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
+.lettre-card p {
+    margin: 0 0 1.4rem;
+}
+
+.lettre-final {
+    font-size: 19px;
+    font-weight: 500;
+    margin-top: 2rem !important;
+}
+
+.lettre-je-taime {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    margin: 1.5rem 0 0.5rem !important;
+}
+
+.lettre-signature {
+    text-align: right;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 15px;
+    margin-top: 1rem !important;
+}
+
+/* Mots animés */
+.lettre-shine {
+    font-weight: 500;
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
+}
+
+.lettre-shine--pink {
+    background-image: linear-gradient(90deg, #f9a8d4, #fb7bb8, #f9a8d4);
+}
+
+.lettre-shine--purple {
+    background-image: linear-gradient(90deg, #c084fc, #a855f7, #c084fc);
+}
+
+.lettre-shine--gold {
+    background-image: linear-gradient(90deg, #fcd34d, #f59e0b, #fcd34d);
+}
+
+.lettre-shine--teal {
+    background-image: linear-gradient(90deg, #5eead4, #2dd4bf, #5eead4);
+}
+
+@keyframes shine {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+@media (max-width: 620px) {
+    .lettre-card {
+        padding: 2rem 1.5rem;
+        font-size: 16px;
+    }
+}
