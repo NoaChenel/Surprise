@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://noachenel.github.io/Surprise/Surprise-Sarah",
+  "homepage": "https://noachenel.github.io/Surprise-Sarah",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
