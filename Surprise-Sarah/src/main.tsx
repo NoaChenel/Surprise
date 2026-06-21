@@ -18,20 +18,22 @@ const router = createBrowserRouter([
     path: "/Love",
     element: <Accueil />
   },
-  { 
+  {
     path: "/mots",
     element: <ComingSoon />
   },
-  { 
+  {
     path: "/Date",
     element: <ComingSoon />
   },
-  { 
+  {
     path: "/Jeux",
     element: <ComingSoon />
   },
 
-]);
+], {
+  basename: "/nom-du-repo",
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>

@@ -65,13 +65,17 @@ export default function Countdown({
         computeTimeLeft(target).minutes === 0 &&
         computeTimeLeft(target).seconds === 0
     );
+    const [celebrating, setCelebrating] = useState(false);
 
     useEffect(() => {
         const tick = () => {
             const next = computeTimeLeft(target);
             const isOver = Object.values(next).every((v) => v === 0);
             setTimeLeft(next);
-            if (isOver) setDone(true);
+            if (isOver) {
+                setDone(true);
+                setCelebrating(true);
+            }
         };
 
         const id = setInterval(tick, 1_000);
@@ -79,32 +83,28 @@ export default function Countdown({
     }, [target]);
 
     useEffect(() => {
-        if (!done || !redirectTo) return;
-
-        const id = setTimeout(() => navigate(redirectTo), 0);
-        return () => clearTimeout(id);
-    }, [done, redirectTo, navigate]);
+        if (done) {
+            const id = setTimeout(() => setCelebrating(true), 100);
+            return () => clearTimeout(id);
+        }
+    }, []);
 
     const label = `${day} ${MONTH_NAMES[month - 1]} ${year}`;
-
-    if (done) {
-        return (
-            <div className="cd-root">
-                <p className="cd-eyebrow">{doneTitle}</p>
-                <h2 className="cd-ready">{doneMessage}</h2>
-            </div>
-        );
-    }
 
     return (
         <div className="cd-container">
             <div className="cd-root">
-                <p className="cd-eyebrow">Compte à rebours jusqu'au {label}</p>
+                <p className="cd-eyebrow">
+                    Compte à rebours jusqu'au {label}
+                </p>
 
                 <div className="cd-grid">
                     {UNITS.map(({ key, label }, i) => (
                         <div key={key} className="cd-item">
-                            <div className="cd-block" style={{ animationDelay: `${i * 0.15}s` }}>
+                            <div
+                                className={`cd-block ${done ? "cd-block--done" : ""}`}
+                                style={{ animationDelay: `${i * 0.15}s` }}
+                            >
                                 <span className="cd-number" key={timeLeft[key]}>
                                     {pad(timeLeft[key])}
                                 </span>
@@ -112,13 +112,24 @@ export default function Countdown({
                             </div>
 
                             {i < UNITS.length - 1 && (
-                                <span className="cd-sep" aria-hidden="true">
-                                    :
-                                </span>
+                                <span className="cd-sep" aria-hidden="true">:</span>
                             )}
                         </div>
                     ))}
                 </div>
+
+                {/* Message de fin — apparaît par-dessus une fois done */}
+                {done && (
+                    <div className={`cd-done ${celebrating ? "cd-done--in" : ""}`}>
+                        <p className="cd-eyebrow">{doneTitle}</p>
+                        <h2 className="cd-ready">{doneMessage}</h2>
+                        {redirectTo && (
+                            <button className="cd-cta" onClick={() => navigate(redirectTo)}>
+                                Continuer ✨
+                            </button>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );
