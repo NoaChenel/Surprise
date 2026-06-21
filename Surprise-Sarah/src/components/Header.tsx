@@ -1,35 +1,37 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "@styles/header.css";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <header className="hd-root">
             <div className="hd-logo">
-                <a href="/Love" className="hd-link" onClick={() => setOpen(false)}>
+                <button className="hd-link" onClick={() => {navigate("/Love"); setOpen(false);}}>
                     <i className="ti ti-heart" aria-hidden="true" />
                     Mon coeur
-                </a>
+                </button>
             </div>
 
             <nav className={`hd-links${open ? " open" : ""}`}>
-                <a href="/Love" className="hd-link" onClick={() => setOpen(false)}>
+                <button className="hd-link" onClick={() => {navigate("/Love"); setOpen(false);}}>
                     <i className="ti ti-writing" aria-hidden="true" />
                     Lettre
-                </a>
-                <a href="/Mots" className="hd-link" onClick={() => setOpen(false)}>
+                </button>
+                <button className="hd-link" onClick={() => {navigate("/Mots"); setOpen(false);}}>
                     <i className="ti ti-mood-heart" aria-hidden="true" />
                     Mots mignons
-                </a>
-                <a href="/Date" className="hd-link" onClick={() => setOpen(false)}>
+                </button>
+                <button className="hd-link" onClick={() => {navigate("/Date"); setOpen(false);}}>
                     <i className="ti ti-mail" aria-hidden="true" />
                     Date
-                </a>
-                <a href="/Jeux" className="hd-link" onClick={() => setOpen(false)}>
+                </button>
+                <button className="hd-link" onClick={() => {navigate("/Jeux"); setOpen(false);}}>
                     <i className="ti ti-puzzle" aria-hidden="true" />
                     Mini jeux
-                </a>
+                </button>
             </nav>
 
             <button

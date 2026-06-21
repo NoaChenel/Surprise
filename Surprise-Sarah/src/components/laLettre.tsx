@@ -5,7 +5,7 @@ const S = ({ children, color = "pink" }: { children: string; color?: "pink" | "p
     <span className={`lettre-shine lettre-shine--${color}`}>{children}</span>
 );
 
-const CYCLING_WORDS = [" d'être qui tu es", " pour ton sourire", " pour ta douceur", " pour ta force", "pour ton âme"];
+const CYCLING_WORDS = [" d'être qui tu es", " pour ton sourire", " pour ta douceur"];
 
 function TypewriterCycle() {
     const ref = useRef<HTMLSpanElement>(null);
@@ -182,7 +182,7 @@ export default function Lettre() {
                     </span>
                 </RevealParagraph>
 
-                <p className="lettre-signature">Ton amoureux 💕</p>
+                <p className="lettre-signature">Ton amoureux qui t'aime le plus au monde 💕</p>
             </article>
         </div>
     );

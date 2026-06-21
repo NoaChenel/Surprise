@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     element: <Accueil />
   },
   {
-    path: "/mots",
+    path: "/Mots",
     element: <ComingSoon />
   },
   {
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
   },
 
 ], {
-  basename: "/nom-du-repo",
+  basename: "/Surprise",
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
