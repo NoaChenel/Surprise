@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Jour, Mois, Annee } from "@context/date.tsx";
 
-export default function Daily() {
+export default function DailyMess() {
     const navigate = useNavigate();
 
     useEffect(() => {
