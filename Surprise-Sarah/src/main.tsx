@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Attente from "@pages/Attente";
 import Accueil from "@pages/Accueil";
 import ComingSoon from "@pages/ComingSoon";
+import Daily from "@pages/daily";
 
 import "@styles/colors.css";
 import "@styles/styles.css"
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/Mots",
-    element: <ComingSoon />
+    element: <Daily />
   },
   {
     path: "/Date",

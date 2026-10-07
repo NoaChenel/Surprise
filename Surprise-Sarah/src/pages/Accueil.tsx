@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Background from "@components/background";
 import Header from "@components/Header";
-import Lettre from "@components/laLettre";
+import Lettre from "@components/Lettre/laLettre";
+import Lettre6m from "@components/Lettre/Lettre6m";
+import Tabs from "@components/tab";
 import { Jour, Mois, Annee } from "@context/date.tsx";
 
 const Accueil = function () {
@@ -20,7 +22,7 @@ const Accueil = function () {
     return <>
         <Background />
         <Header />
-        <Lettre />
+        <Tabs items={[{label : "Anniversaire", content : <Lettre/>},{label : "6 mois", content : <Lettre6m/>}]}/>
     </>
 }
 

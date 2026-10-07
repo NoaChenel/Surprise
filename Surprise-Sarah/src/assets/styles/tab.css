@@ -1,0 +1,305 @@
+/* ==================================================
+   Tabs.css
+   Style glassmorphism — thème romantique
+   ================================================== */
+
+/* ---- Conteneur racine ---- */
+
+.tabs-root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    margin-top: 5rem;
+}
+
+
+/* ==================================================
+   Barre d'onglets
+   ================================================== */
+
+.tabs-bar {
+    display: flex;
+    gap: 0.35rem;
+
+    width: 100%;
+
+    padding: 0.35rem;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(249, 168, 201, 0.12);
+    border-radius: 16px;
+
+    overflow-x: auto;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+    scrollbar-width: none;
+}
+
+.tabs-bar::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* ==================================================
+   Bouton d'onglet
+   ================================================== */
+
+.tabs-btn {
+    position: relative;
+
+    flex: 1;
+    flex-shrink: 0;
+
+    min-width: max-content;
+
+    font-family: "Lato", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    color: rgba(255, 248, 249, 0.42);
+
+    background: transparent;
+
+    border: 1px solid transparent;
+    border-radius: 12px;
+
+    padding: 0.8rem 1.2rem;
+
+    cursor: pointer;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+/* ---- Hover ---- */
+
+.tabs-btn:hover {
+    color: rgba(255, 248, 249, 0.8);
+
+    background: rgba(249, 168, 201, 0.055);
+
+    border-color: rgba(249, 168, 201, 0.08);
+}
+
+
+/* ---- Pression ---- */
+
+.tabs-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* ==================================================
+   Onglet actif
+   ================================================== */
+
+.tabs-btn--active {
+    color: var(--rose);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(249, 168, 201, 0.12),
+            rgba(201, 160, 217, 0.08)
+        );
+
+    border-color: rgba(249, 168, 201, 0.18);
+
+    box-shadow:
+        0 0 20px rgba(249, 168, 201, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    text-shadow:
+        0 0 18px rgba(249, 168, 201, 0.35);
+}
+
+
+/* ==================================================
+   Indicateur actif
+   ================================================== */
+
+.tabs-indicator {
+    position: absolute;
+
+    left: 15%;
+    right: 15%;
+    bottom: 0.05rem;
+
+    height: 2px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--rose),
+        var(--violet),
+        transparent
+    );
+
+    box-shadow:
+        0 0 8px rgba(249, 168, 201, 0.45),
+        0 0 18px rgba(201, 160, 217, 0.2);
+
+    animation:
+        tabSlideIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+
+/* ==================================================
+   Panneau de contenu
+   ================================================== */
+
+.tabs-panel {
+    position: relative;
+
+    padding: 2rem 0;
+
+    animation: tabFadeIn 0.35s ease both;
+}
+
+
+/* Petite lueur très subtile derrière le contenu */
+
+.tabs-panel::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 10%;
+    right: 10%;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(249, 168, 201, 0.12),
+        rgba(201, 160, 217, 0.12),
+        transparent
+    );
+
+    pointer-events: none;
+}
+
+
+/* ==================================================
+   Focus clavier
+   ================================================== */
+
+.tabs-btn:focus-visible {
+    outline: none;
+
+    border-color: rgba(249, 168, 201, 0.45);
+
+    box-shadow:
+        0 0 0 3px rgba(249, 168, 201, 0.08),
+        0 0 25px rgba(249, 168, 201, 0.12);
+}
+
+
+/* ==================================================
+   Animations
+   ================================================== */
+
+@keyframes tabSlideIn {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+
+@keyframes tabFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==================================================
+   Responsive
+   ================================================== */
+
+@media (max-width: 600px) {
+
+    .tabs-bar {
+        gap: 0.2rem;
+        padding: 0.25rem;
+
+        border-radius: 14px;
+    }
+
+    .tabs-btn {
+        flex: 0 0 auto;
+
+        font-size: 0.65rem;
+
+        letter-spacing: 0.1em;
+
+        padding: 0.7rem 0.9rem;
+
+        border-radius: 10px;
+    }
+
+    .tabs-indicator {
+        left: 12%;
+        right: 12%;
+    }
+
+    .tabs-panel {
+        padding: 1.5rem 0;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    .tabs-btn {
+        font-size: 0.6rem;
+        padding: 0.65rem 0.75rem;
+    }
+}
+
+
+/* ==================================================
+   Accessibilité
+   ================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .tabs-btn,
+    .tabs-panel,
+    .tabs-indicator {
+        animation: none;
+        transition: none;
+    }
+}
