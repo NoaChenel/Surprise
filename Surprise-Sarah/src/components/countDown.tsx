@@ -54,7 +54,7 @@ export default function Countdown({
     month,
     year,
     doneTitle = "Le grand jour est arrivé",
-    doneMessage = "Joyeux anniversaire ❤️",
+    doneMessage = "Joyeux anniversaire de 6 mois ❤️",
     redirectTo
 }: CountdownProps) {
     const navigate = useNavigate();
