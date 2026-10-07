@@ -1,0 +1,805 @@
+/* ============================================================
+   DATE REQUEST
+   Style romantique / glassmorphism
+   ============================================================ */
+
+.date-request {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6rem;
+
+    overflow: hidden;
+}
+
+/* ============================================================
+   Halo
+   ============================================================ */
+
+.date-request__glow {
+    position: absolute;
+
+    width: 550px;
+    height: 550px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(249, 168, 201, 0.14) 0%,
+            rgba(201, 160, 217, 0.08) 35%,
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    pointer-events: none;
+
+    animation:
+        dateGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes dateGlow {
+    from {
+        transform: scale(0.85);
+        opacity: 0.65;
+    }
+
+    to {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+/* ============================================================
+   Carte principale
+   ============================================================ */
+
+.date-request__card {
+    position: relative;
+    z-index: 1;
+
+    width: min(680px, 100%);
+
+    box-sizing: border-box;
+
+    padding: 3rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.09),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    border: 1px solid rgba(249, 168, 201, 0.18);
+
+    border-radius: 28px;
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.3),
+        0 0 50px rgba(249, 168, 201, 0.07);
+
+    animation: dateCardIn 0.7s ease both;
+}
+
+@keyframes dateCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================================
+   Icône
+   ============================================================ */
+
+.date-request__icon {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 1.3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(249, 168, 201, 0.08);
+
+    border: 1px solid rgba(249, 168, 201, 0.2);
+
+    font-size: 1.6rem;
+
+    box-shadow:
+        0 0 30px rgba(249, 168, 201, 0.12);
+
+    animation: dateIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes dateIconFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ============================================================
+   Titres
+   ============================================================ */
+
+.date-request__eyebrow {
+    display: block;
+
+    margin-bottom: 0.65rem;
+
+    text-align: center;
+
+    font-family: "Lato", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 400;
+
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+
+    color: rgba(255, 248, 249, 0.42);
+}
+
+.date-request__title {
+    margin: 0;
+
+    text-align: center;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.6rem, 7vw, 4.2rem);
+    font-weight: 400;
+    line-height: 1;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--rose),
+            var(--violet)
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.date-request__intro {
+    margin: 1rem 0 0;
+
+    text-align: center;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.35rem;
+    font-style: italic;
+
+    color: rgba(255, 248, 249, 0.55);
+}
+
+/* ============================================================
+   Séparateur
+   ============================================================ */
+
+.date-request__separator {
+    display: flex;
+    align-items: center;
+
+    gap: 0.7rem;
+
+    width: min(240px, 70%);
+
+    margin: 1.8rem auto 2rem;
+}
+
+.date-request__separator span {
+    display: block;
+}
+
+.date-request__separator span:not(:nth-child(2)) {
+    flex: 1;
+    height: 1px;
+}
+
+.date-request__separator span:first-child {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(249, 168, 201, 0.35)
+        );
+}
+
+.date-request__separator span:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(201, 160, 217, 0.35),
+            transparent
+        );
+}
+
+.date-request__separator span:nth-child(2) {
+    font-size: 0.75rem;
+    color: var(--rose);
+}
+
+/* ============================================================
+   Formulaire
+   ============================================================ */
+
+.date-request__form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1.25rem;
+}
+
+.date-request__field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5rem;
+}
+
+.date-request__field label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-left: 0.15rem;
+
+    font-family: "Lato", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+
+    color: rgba(255, 248, 249, 0.58);
+}
+
+.date-request__field label span {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+
+    color: rgba(255, 248, 249, 0.25);
+
+    text-transform: lowercase;
+}
+
+/* ============================================================
+   Inputs
+   ============================================================ */
+
+.date-request__field input,
+.date-request__field select,
+.date-request__field textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid rgba(249, 168, 201, 0.12);
+    border-radius: 12px;
+
+    outline: none;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    color: var(--white);
+
+    font-family: "Lato", sans-serif;
+    font-size: 0.9rem;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.date-request__field input,
+.date-request__field select {
+    height: 48px;
+
+    padding: 0 1rem;
+}
+
+.date-request__field textarea {
+    min-height: 110px;
+
+    padding: 0.9rem 1rem;
+
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* Placeholder */
+
+.date-request__field input::placeholder,
+.date-request__field textarea::placeholder {
+    color: rgba(255, 248, 249, 0.23);
+}
+
+/* Focus */
+
+.date-request__field input:focus,
+.date-request__field select:focus,
+.date-request__field textarea:focus {
+    border-color: rgba(249, 168, 201, 0.42);
+
+    background:
+        rgba(249, 168, 201, 0.045);
+
+    box-shadow:
+        0 0 0 3px rgba(249, 168, 201, 0.06),
+        0 0 20px rgba(249, 168, 201, 0.05);
+}
+
+/* ============================================================
+   Ligne date / heure
+   ============================================================ */
+
+.date-request__row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1rem;
+}
+
+/* ============================================================
+   Select
+   ============================================================ */
+
+.date-request__field select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    cursor: pointer;
+
+    background-image:
+        linear-gradient(
+            45deg,
+            transparent 50%,
+            rgba(249, 168, 201, 0.7) 50%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(249, 168, 201, 0.7) 50%,
+            transparent 50%
+        );
+
+    background-position:
+        calc(100% - 18px) 20px,
+        calc(100% - 13px) 20px;
+
+    background-size:
+        5px 5px,
+        5px 5px;
+
+    background-repeat: no-repeat;
+}
+
+.date-request__field select option {
+    background: #24101a;
+    color: var(--white);
+}
+
+/* ============================================================
+   Erreur
+   ============================================================ */
+
+.date-request__error {
+    padding: 0.8rem 1rem;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(232, 116, 158, 0.2);
+
+    background:
+        rgba(232, 116, 158, 0.07);
+
+    color: rgba(255, 220, 230, 0.8);
+
+    font-family: "Lato", sans-serif;
+    font-size: 0.75rem;
+
+    text-align: center;
+
+    animation: errorIn 0.25s ease both;
+}
+
+@keyframes errorIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   Bouton d'envoi
+   ============================================================ */
+
+.date-request__submit {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.8rem;
+
+    width: 100%;
+    height: 52px;
+
+    margin-top: 0.5rem;
+
+    border: 1px solid rgba(249, 168, 201, 0.25);
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(249, 168, 201, 0.18),
+            rgba(201, 160, 217, 0.15)
+        );
+
+    color: var(--white);
+
+    font-family: "Lato", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 25px rgba(249, 168, 201, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.date-request__submit span {
+    color: var(--rose);
+
+    font-size: 0.95rem;
+
+    transition: transform 0.25s ease;
+}
+
+.date-request__submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+
+    border-color: rgba(249, 168, 201, 0.45);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(249, 168, 201, 0.25),
+            rgba(201, 160, 217, 0.2)
+        );
+
+    box-shadow:
+        0 8px 30px rgba(249, 168, 201, 0.12);
+}
+
+.date-request__submit:hover:not(:disabled) span {
+    transform: scale(1.15);
+}
+
+.date-request__submit:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.date-request__submit:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+/* ============================================================
+   Spinner
+   ============================================================ */
+
+.date-request__spinner {
+    width: 14px;
+    height: 14px;
+
+    border: 2px solid rgba(255, 248, 249, 0.2);
+    border-top-color: var(--rose);
+
+    border-radius: 50%;
+
+    animation: dateSpinner 0.7s linear infinite;
+}
+
+@keyframes dateSpinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================================
+   Petit texte sous le formulaire
+   ============================================================ */
+
+.date-request__hint {
+    margin: 1.4rem 0 0;
+
+    text-align: center;
+
+    font-family: "Lato", sans-serif;
+    font-size: 0.62rem;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(255, 248, 249, 0.25);
+}
+
+/* ============================================================
+   Écran de succès
+   ============================================================ */
+
+.date-request__success {
+    position: relative;
+    z-index: 1;
+
+    width: min(600px, 100%);
+
+    box-sizing: border-box;
+
+    padding: 3.5rem 3rem;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.09),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    border: 1px solid rgba(249, 168, 201, 0.2);
+
+    border-radius: 28px;
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.3),
+        0 0 50px rgba(249, 168, 201, 0.08);
+
+    animation: dateSuccessIn 0.7s ease both;
+}
+
+@keyframes dateSuccessIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.date-request__success-heart {
+    font-size: 3.2rem;
+
+    margin-bottom: 1rem;
+
+    animation:
+        successHeart 1.5s ease-in-out infinite;
+}
+
+@keyframes successHeart {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+.date-request__success-text {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.7rem;
+
+    color: var(--white);
+}
+
+.date-request__success-subtext {
+    margin: 0.7rem 0 0;
+
+    font-family: "Lato", sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.6;
+
+    color: rgba(255, 248, 249, 0.45);
+}
+
+/* ============================================================
+   Résumé de la demande
+   ============================================================ */
+
+.date-request__summary {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 0.7rem;
+
+    margin-top: 2rem;
+
+    text-align: left;
+}
+
+.date-request__summary div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.25rem;
+
+    padding: 0.9rem 1rem;
+
+    border: 1px solid rgba(249, 168, 201, 0.1);
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.date-request__summary span {
+    font-family: "Lato", sans-serif;
+    font-size: 0.58rem;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color: rgba(255, 248, 249, 0.3);
+}
+
+.date-request__summary strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+
+    color: rgba(255, 248, 249, 0.8);
+}
+
+/* ============================================================
+   Bouton retour
+   ============================================================ */
+
+.date-request__back-button {
+    margin-top: 2rem;
+
+    padding: 0.75rem 1.2rem;
+
+    border: 1px solid rgba(249, 168, 201, 0.15);
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: rgba(255, 248, 249, 0.55);
+
+    font-family: "Lato", sans-serif;
+    font-size: 0.68rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.date-request__back-button:hover {
+    transform: translateY(-2px);
+
+    color: var(--white);
+
+    border-color: rgba(249, 168, 201, 0.3);
+
+    background: rgba(249, 168, 201, 0.07);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 600px) {
+    .date-request {
+        min-height: 100vh;
+
+        padding: 2rem 1rem;
+    }
+
+    .date-request__card,
+    .date-request__success {
+        padding: 2.3rem 1.25rem;
+
+        border-radius: 22px;
+    }
+
+    .date-request__icon {
+        width: 50px;
+        height: 50px;
+
+        font-size: 1.4rem;
+    }
+
+    .date-request__title {
+        font-size: 2.7rem;
+    }
+
+    .date-request__intro {
+        font-size: 1.2rem;
+    }
+
+    .date-request__row {
+        grid-template-columns: 1fr;
+    }
+
+    .date-request__summary {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   Réduction des animations
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .date-request__glow,
+    .date-request__icon,
+    .date-request__card,
+    .date-request__success,
+    .date-request__success-heart,
+    .date-request__spinner {
+        animation: none;
+    }
+}
