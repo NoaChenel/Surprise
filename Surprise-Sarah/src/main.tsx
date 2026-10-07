@@ -6,7 +6,7 @@ import Attente from "@pages/Attente";
 import Accueil from "@pages/Accueil";
 import ComingSoon from "@pages/ComingSoon";
 import Daily from "@pages/daily";
-import Date from "@pages/Date";
+import DateRe from "@pages/Date";
 
 import "@styles/colors.css";
 import "@styles/styles.css"
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/Date",
-    element: <Date />
+    element: <DateRe />
   },
   {
     path: "/Jeux",

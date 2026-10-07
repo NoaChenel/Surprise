@@ -2,7 +2,22 @@ import Header from "@components/Header";
 import Background from "@components/background";
 import DateRequest from "@components/dateRequest";
 
-export default function Date() {
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Jour, Mois, Annee } from "@context/date.tsx";
+
+export default function DateRe() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const target = new Date(Annee, Mois - 1, Jour, 0, 0, 0);
+        const now = new Date();
+
+        if (now < target) {
+            navigate("/");
+        }
+    }, [navigate]);
+    
     return (
         <>
             <Background/>
